@@ -37,11 +37,40 @@ namespace api.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] CreatePetRequestDto petDto){
+        public async Task<IActionResult> Create([FromBody] CreatePetRequestDto petDto){
             var petModel = petDto.ToPetFromCreateDto();
-            _context.Pets.Add(petModel);
-            _context.SaveChanges();
+            await _context.Pets.AddAsync(petModel);
+            await _context.SaveChangesAsync();
             return CreatedAtAction(nameof(getById), new { id = petModel.Id}, petModel.ToDto());
+        }
+
+        [HttpPut]
+        [Route("{id}")]
+        public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdatePetRequestDto petDto){
+            var petModel = await _context.Pets.FirstOrDefaultAsync(u => u.Id == id);
+            if (petModel == null){
+                return NotFound();
+            }
+            petModel.Name = petDto.Name;
+            petModel.Animal = petDto.Animal;
+
+            _context.SaveChanges();
+
+            return Ok(petModel.ToDto());
+        }
+
+        [HttpDelete]
+        [Route("{id}")]
+        public IActionResult Delete([FromRoute] int id){
+            var petModel = _context.Pets.FirstOrDefault(u => u.Id == id);
+            if (petModel == null){
+                return NotFound();
+            }
+            _context.Pets.Remove(petModel);
+
+            _context.SaveChanges();
+
+            return NoContent();
         }
 
 
