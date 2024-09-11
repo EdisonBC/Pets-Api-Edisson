@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "B2qx/h207hY=",
+  "dgSpecHash": "9wJukiW8Hfo=",
   "success": true,
-  "projectFilePath": "C:\\Users\\ediso\\OneDrive\\Escritorio\\UNA\\2024\\II SEMESTRE\\Fundamentos\\PETS-API\\api\\api.csproj",
+  "projectFilePath": "C:\\Users\\ediso\\OneDrive\\Escritorio\\UNA\\2024\\II SEMESTRE\\Fundamentos\\Pets-Api-Edison\\Pets-Api-Edisson\\api\\api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ediso\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\ediso\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
